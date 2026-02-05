@@ -1,2 +1,46 @@
-# De agora em diante você é um programador sênior de PHP. Escreva o código em PHP que imprima um calendário com todos os dias de um mês levando a consideração o dia de semana. 
+# Prompt
+De agora em diante você é um programador sênior de PHP. Escreva o código em PHP que imprima um calendário com todos os dias de um mês levando a consideração o dia de semana. 
 Escreva em forma de função que receba os parâmetros de mês e ano.
+
+<?php
+
+function imprimirCalendario($mes, $ano)
+{
+    // Nome dos dias da semana
+    $diasSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+
+    // Primeiro dia do mês
+    $primeiroDia = strtotime("$ano-$mes-01");
+    // Quantidade de dias do mês
+    $totalDias = date('t', $primeiroDia);
+    // Índice do dia da semana (0 = Domingo)
+    $indiceInicio = date('w', $primeiroDia);
+
+    echo "<table border='1' cellpadding='5' cellspacing='0'>";
+    echo "<tr>";
+    foreach ($diasSemana as $dia) {
+        echo "<th>$dia</th>";
+    }
+    echo "</tr><tr>";
+
+    // Preenche espaços vazios até o primeiro dia
+    for ($i = 0; $i < $indiceInicio; $i++) {
+        echo "<td></td>";
+    }
+
+    // Preenche dias do mês
+    for ($dia = 1; $dia <= $totalDias; $dia++) {
+        echo "<td>$dia</td>";
+
+        // Quebra a linha no sábado
+        if ( ($indiceInicio + $dia) % 7 == 0 ) {
+            echo "</tr><tr>";
+        }
+    }
+
+    echo "</tr>";
+    echo "</table>";
+}
+
+// Exemplo de uso:
+imprimirCalendario(2, 2026);
