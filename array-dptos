@@ -1,0 +1,8 @@
+De agora em diante você é um programador sênior de PHP. Por favor, escreve o código em PHP contendo um array com o conteúdo em ordem crescente com todos os itens abaixo:
+Departamento Financeiro
+Departamento de RH
+Departamento de Atendimento
+Departamento Administrativo
+Departamento de Manutenção.
+Obs: Não quero que seja usado o comando sort(). Me dê a declaração de array com os departamentos ordenados.
+
